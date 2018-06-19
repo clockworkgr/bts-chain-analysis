@@ -3,7 +3,7 @@ const util = require('util');
 var client = new elasticsearch.Client({
     host: 'localhost:9200',
 });
-
+var opscount=[];
 
 function sleep(ms) {
     return new Promise(resolve => {
@@ -25,8 +25,13 @@ async function getBlock(blockno) {
     });
     for(var j=0;j<response.hits.hits.length;j++) {
         let op= response.hits.hits[j];
-        console.log(op._source.operation_type);
-        console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
+        if (opscount[op._source.operation_type]!=undefined) {
+            opscount[op._source.operation_type]=opscount[op._source.operation_type]+1;
+        }else{
+            opscount[op._source.operation_type]=1;
+        }
+        console.log(opscount);
+       //console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
     }
 }
 
