@@ -25,7 +25,8 @@ async function getBlock(blockno) {
     });
     for(var j=0;j<response.hits.hits.length;j++) {
         let op= response.hits.hits[j];
-        console.log(op._source);
+        console.log(op._source.operation_type);
+        console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
     }
 }
 
