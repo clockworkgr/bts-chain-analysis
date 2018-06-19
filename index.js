@@ -33,15 +33,11 @@ async function getBlock(blockno) {
         console.log(opscount);
        //console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
     }
+    await getBlock(blockno+1)
 }
 
 async function importBlocks(since) {
-    var i = since;
-    while (true) {
-        getBlock(i);
-        await sleep(1);
-        i++;
-    }
+    await  getBlock(since);
 }
 
 importBlocks(27000000);
