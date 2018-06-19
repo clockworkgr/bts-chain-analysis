@@ -23,7 +23,10 @@ async function getBlock(blockno) {
             }
         }
     });
-    console.log(response.hits.hits);
+    for(var j=0;j<response.hits.hits.length;j++) {
+        let op= response.hits.hits[j];
+        console.log(op._source);
+    }
 }
 
 async function importBlocks(since) {
