@@ -29,15 +29,16 @@ async function getBlock(blockno) {
             opscount[op._source.operation_type]=opscount[op._source.operation_type]+1;
         }else{
             opscount[op._source.operation_type]=1;
-        }
-        console.log(opscount);
+        }       
        //console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
     }
+    console.log(opscount);
     await getBlock(blockno+1)
+    
 }
 
 async function importBlocks(since) {
     await  getBlock(since);
 }
 
-importBlocks(27000000);
+importBlocks(22758700);
