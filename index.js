@@ -30,9 +30,9 @@ async function getBlock(blockno) {
         }else{
             opscount[op._source.operation_type]=1;
         }       
-       //console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
+       console.log(JSON.stringify(JSON.parse(op._source.operation_history.op)));
     }
-    console.log(opscount);
+    //console.log(opscount);
     await getBlock(blockno+1)
     
 }
